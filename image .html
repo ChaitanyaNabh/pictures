@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .form-section img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+        }
+        .form-section textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .camera-icon {
+            font-size: 40px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+    <script>
+        function captureImage(inputId, imgId) {
+            const input = document.getElementById(inputId);
+            input.click();
+        }
+
+        function previewImage(input, imgId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imgElement = document.getElementById(imgId);
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Image Form</h2>
+        
+        <form>
+            <div class="form-section">
+                <input type="file" id="file1" accept="image/*" capture="environment" style="display:none;" onchange="previewImage(this, 'img1')">
+                <span class="camera-icon" onclick="captureImage('file1', 'img1')">📷</span>
+                <img id="img1" onclick="window.open(this.src, '_blank')">
+                <div>
+                    <textarea placeholder="Enter description for Image 1"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <input type="file" id="file2" accept="image/*" capture="environment" style="display:none;" onchange="previewImage(this, 'img2')">
+                <span class="camera-icon" onclick="captureImage('file2', 'img2')">📷</span>
+                <img id="img2" onclick="window.open(this.src, '_blank')">
+                <div>
+                    <textarea placeholder="Enter description for Image 2"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <input type="file" id="file3" accept="image/*" capture="environment" style="display:none;" onchange="previewImage(this, 'img3')">
+                <span class="camera-icon" onclick="captureImage('file3', 'img3')">📷</span>
+                <img id="img3" onclick="window.open(this.src, '_blank')">
+                <div>
+                    <textarea placeholder="Enter description for Image 3"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <input type="file" id="file4" accept="image/*" capture="environment" style="display:none;" onchange="previewImage(this, 'img4')">
+                <span class="camera-icon" onclick="captureImage('file4', 'img4')">📷</span>
+                <img id="img4" onclick="window.open(this.src, '_blank')">
+                <div>
+                    <textarea placeholder="Enter description for Image 4"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <input type="file" id="file5" accept="image/*" capture="environment" style="display:none;" onchange="previewImage(this, 'img5')">
+                <span class="camera-icon" onclick="captureImage('file5', 'img5')">📷</span>
+                <img id="img5" onclick="window.open(this.src, '_blank')">
+                <div>
+                    <textarea placeholder="Enter description for Image 5"></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
